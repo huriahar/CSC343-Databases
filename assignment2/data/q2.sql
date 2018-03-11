@@ -34,8 +34,7 @@ create view pelection_winners as
     from election join cabinet on election.id = cabinet.election_id
                   join cabinet_party on cabinet.id = cabinet_party.cabinet_id
     where cabinet_party.pm = true AND
-          e_type = 'Parliamentary election'
-    order by country_id, election_id, cabinet_id;
+          e_type = 'Parliamentary election';
 
 -- Created an intermediate view where for each election id, all entries with same id are in alliance with each other
 create view alliance_interm as
@@ -44,65 +43,56 @@ create view alliance_interm as
     where (e1.election_id = e2.election_id) AND
           (e1.alliance_id is null) AND
           ((e1.id = e2.id) OR
-           (e2.alliance_id = e1.id))
-    order by election_id, id;
+           (e2.alliance_id = e1.id));
 
 create view alliance_counts as
     select election_id, id, count(*)
     from alliance_interm
-    group by election_id, id
-    order by election_id, id;
+    group by election_id, id;
 
 create view alliances as
     select alliance_interm.election_id, alliance_interm.id, party_id, count
     from alliance_interm, alliance_counts
     where alliance_interm.election_id = alliance_counts.election_id AND
-          alliance_interm.id = alliance_counts.id
-    order by election_id, id;
+          alliance_interm.id = alliance_counts.id;
 
 -- Look at alliance counts of only those parties which are in pelection_winners
 create view pwinner_alliances as
     select country_id, pelection_winners.election_id, cabinet_id, pelection_winners.party_id, count
     from pelection_winners, alliances
     where pelection_winners.election_id = alliances.election_id AND
-          pelection_winners.party_id = alliances.party_id
-    order by country_id, election_id, cabinet_id, id;
+          pelection_winners.party_id = alliances.party_id;
 
 create view all_countries as
     select country_id, name as country, electoral_system
     from pwinner_alliances join country on pwinner_alliances.country_id = country.id
-    group by country_id, name, electoral_system
-    order by country_id, name;
+    group by country_id, name, electoral_system;
 
 create view single_party_alliances as
     select country_id, count(count) as single_party
     from pwinner_alliances
     where count = 1
-    group by country_id
-    order by country_id;
+    group by country_id;
 
 create view two_to_three_party_alliances as
     select country_id, count(count) as two_to_three
     from pwinner_alliances
     where count = 2 OR
           count = 3
-    group by country_id
-    order by country_id;
+    group by country_id;
 
 create view four_to_five_party_alliances as
     select country_id, count(count) as four_to_five
     from pwinner_alliances
     where count = 4 OR
           count = 5
-    group by country_id
-    order by country_id;
+    group by country_id;
 
 create view six_or_more_party_alliances as
     select country_id, count(count) as six_or_more
     from pwinner_alliances
     where count >= 6
-    group by country_id
-    order by country_id;
+    group by country_id;
 
 create view joined_alliance_counts as
     select all_countries.country_id, country, electoral_system,
