@@ -42,7 +42,7 @@ create view election_years_diff as
 create view off_cycle_elections as
 	select country_id, count(*) as num_dissolutions, max(e1date) as most_recent_dissolution
 	from election_years_diff
-	where (yeardiff < election_cycle) AND
+	where (yeardiff != election_cycle) AND
 	      (e1electionid != e2electionid)
 	group by country_id;
 

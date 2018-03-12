@@ -17,6 +17,13 @@ TRUNCATE q4;
 -- that define your intermediate steps.  (But give them better names!)
 DROP VIEW IF EXISTS pelection_number CASCADE;
 DROP VIEW IF EXISTS pelection_winners CASCADE;
+DROP VIEW IF EXISTS pelection_winners_distinct CASCADE;
+DROP VIEW IF EXISTS pelection_pm CASCADE;
+DROP VIEW IF EXISTS pm_count CASCADE;
+DROP VIEW IF EXISTS repeat_pm CASCADE;
+DROP VIEW IF EXISTS pelection_winners_pairs CASCADE;
+DROP VIEW IF EXISTS incumbent_pairs CASCADE;
+DROP VIEW IF EXISTS result CASCADE;
 
 -- Define views for your intermediate steps here.
 
@@ -33,13 +40,17 @@ create view pelection_winners as
     where cabinet_party.pm = true AND
           e_type = 'Parliamentary election';
 
+create view pelection_winners_distinct as
+	select DISTINCT country_id, e_date, election_id, party_id, previous_parliament_election_id
+	from pelection_winners;
+
 create view pelection_pm as
-	select pelection_winners.country_id, pelection_winners.election_id, pelection_winners.cabinet_id, party_id, cabinet.name as orig_name,
-	       regexp_replace(cabinet.name::text, '([A-Za-z]*?)[ IV]+$', '\1') as name
-	from pelection_winners, cabinet
-	where pelection_winners.country_id = cabinet.country_id AND
-		  pelection_winners.cabinet_id = cabinet.id AND
-		  pelection_winners.election_id = cabinet.election_id;
+	select p.country_id, e_date, p.election_id, p.cabinet_id, party_id, c.name as orig_name,
+	       regexp_replace(c.name::text, '([A-Za-z]*?)[ IV]+$', '\1') as name
+	from pelection_winners p, cabinet c
+	where p.country_id = c.country_id AND
+		  p.cabinet_id = c.id AND
+		  p.election_id = c.election_id;
 
 create view pm_count as
 	select country_id, name, count(*) - 1 as pm_repeat_times
@@ -50,10 +61,6 @@ create view repeat_pm as
 	select country_id, sum(pm_repeat_times) as num_repeat_pm
 	from pm_count
 	group by country_id;
-
-create view pelection_winners_distinct as
-	select DISTINCT country_id, e_date, election_id, party_id, previous_parliament_election_id
-	from pelection_winners;
 
 create view pelection_winners_pairs as
 	select p1.country_id, p1.e_date as p1edate, p2.e_date as p2edate, 
