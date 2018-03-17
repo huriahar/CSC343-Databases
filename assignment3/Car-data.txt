@@ -1,0 +1,711 @@
+--- Customer ---
+Name: Sofia Jan
+Age: 24
+Email:j.s@mail.com
+
+Name: Atena Najm
+Age: 39
+Email:a.n@mail.com
+
+Name: Yu Chang
+Age: 42
+Email: y.c@mail.com
+
+Name: Ryan King
+Age: 52
+Email:r.k@mail.com
+
+Name: Thomas George
+Age: 34
+Email: t.g@gmail.com
+
+Name: Marie Smith
+Age: 22
+Email: ma.smith@mail.com
+
+Name: Jonah Swartz
+Age: 28
+Email: jj.swtz@mail.com
+
+Name: Terry Su
+Age: 31
+Email: terry.su@mail.com
+
+Name: David Chen
+Age: 45
+Email: dchen@mail.com
+
+Name: Cynthia Nguyen
+Age: 27
+Email: cyngu@mail.com
+
+Name: Malik Abdullah
+Age: 27
+Email: malik_aa@mail.com
+
+Name: John Parkinson
+Age: 33
+Email: jparki@mail.com
+
+Name: Stan Orlowski
+Age: 26
+Email: orlows@mail.com
+
+Name: Sanja Hilbert
+Age: 23
+Email: s.hilbert@mail.com
+
+Name: Ian Hsu
+Age: 41
+Email: shenian@mail.com
+
+--- Model ----
+ID: 1
+Name: BMW X5
+Vehicle Type: SUV
+Model Number: 415
+Capacity (Seats): 5
+
+ID: 2
+Name: Mercedes E400
+Vehicle Type: Luxury
+Model Number: 1848
+Capacity (Seats): 4
+
+ID: 3
+Name: Chevrolet Spark
+Vehicle Type: Economy
+Model Number: 1521
+Capacity (Seats): 4
+
+ID: 4
+Name: Dodge Grand Caravan
+Vehicle Type: Mini Van
+Model Number: 2210
+Capacity (Seats): 7
+
+ID: 5
+Name: Chevrolet Suburban
+Vehicle Type: SUV
+Model Number: 1121
+Capacity (Seats): 8
+
+ID: 6
+Name: Toyota Inception
+Vehicle Type: Sports
+Model Number: 1631
+Capacity (Seats): 2
+
+ID: 7
+Name: Volvo V231
+Vehicle Type: Economy
+Model Number: 1737
+Capacity (Seats): 4
+
+ID: 8
+Name: Kia T21
+Vehicle Type: Economy
+Model Number: 1221
+Capacity (Seats): 4
+
+--- RENTALSTATION -----
+Station Code: 1001
+Name: SuperCar College
+Address: 333 College St
+Area Code: M5T1P7
+City: Toronto
+
+Station Code: 1002
+Name: SuperCar Billy Bishop Airport
+Address: 200 Spadina Ave
+Area Code: M5V1A1
+City: Toronto
+
+Station Code: 1003
+Name: SuperCar York
+Address: 220 Eglinton St
+Area Code: M6E2G8
+City: Toronto
+
+Station Code: 1004
+Name: SuperCar East Toronto
+Address: 200 Richmond St E
+Area Code: M5A2P2
+City: Toronto
+
+Station Code: 1005
+Name: SuperCar Parliament
+Address: 200 Wellington St
+Area Code: K1A0G9
+City: Ottawa
+
+Station Code: 1006
+Name: SuperCar Ottawa Airport
+Address: 216 Airport Rd
+Area Code: K1V9B4
+City: Ottawa
+
+Station Code: 1007
+Name: SuperCar Central Station
+Address: 895 Rue Mansfield
+Area Code: H3B4G1
+City: Montreal
+
+Station Code: 1008
+Name: SuperCar North Montreal
+Address: 2351 Rue Masson
+Area Code: H1Y1V8
+City: Montreal
+
+Station Code: 1009
+Name: SuperCar West Montreal
+Address: 7000 Avenue Van Horne
+Area Code: H3S2B2
+City: Montreal
+
+--- CAR -----
+ID: 101
+License Plate Number: torc566
+Station Code: 1001
+Model_Id: 1
+
+ID: 102
+License Plate Number: torc212
+Station Code: 1001
+Model_Id: 8
+
+ID: 103
+License Plate Number: torc631
+Station Code: 1001
+Model_Id: 7
+
+ID: 104
+License Plate Number: torc522
+Station Code: 1001
+Model_Id: 4
+
+ID: 105
+License Plate Number: torbb10
+Station Code: 1002
+Model_Id: 2
+
+ID: 106
+License Plate Number: torbb11
+Station Code: 1002
+Model_Id: 7
+
+ID: 107
+License Plate Number: torbb12
+Station Code: 1002
+Model_Id: 8
+
+ID: 108
+License Plate Number: tory011
+Station Code: 1003
+Model_Id: 3
+
+ID: 109
+License Plate Number: tory016
+Station Code: 1003
+Model_Id: 4
+
+ID: 110
+License Plate Number: tory017
+Station Code: 1003
+Model_Id: 5
+
+ID: 111
+License Plate Number: tore101
+Station Code: 1004
+Model_Id: 5
+
+ID: 112
+License Plate Number: tore102
+Station Code: 1004
+Model_Id: 7
+
+ID: 113
+License Plate Number: ottp111
+Station Code: 1005
+Model_Id: 2
+
+ID: 114
+License Plate Number: ottp112
+Station Code: 1005
+Model_Id: 7
+
+ID: 115
+License Plate Number: ottp113
+Station Code: 1005
+Model_Id: 8
+
+ID: 116
+License Plate Number: otta101
+Station Code: 1006
+Model_Id: 1
+
+ID: 117
+License Plate Number: otta102
+Station Code: 1006
+Model_Id: 7
+
+ID: 118
+License Plate Number: otta103
+Station Code: 1006
+Model_Id: 6
+
+ID: 119
+License Plate Number: mocs300
+Station Code: 1007
+Model_Id: 3
+
+ID: 120
+License Plate Number: mocs302
+Station Code: 1007
+Model_Id: 7
+
+ID: 121
+License Plate Number: mocs303
+Station Code: 1007
+Model_Id: 7
+
+ID: 122
+License Plate Number: mono201
+Station Code: 1008
+Model_Id: 8
+
+ID: 123
+License Plate Number: mono202
+Station Code: 1008
+Model_Id: 4
+
+ID: 124
+License Plate Number: mono203
+Station Code: 1008
+Model_Id: 5
+
+ID: 125
+License Plate Number: mowe501
+Station Code: 1009
+Model_Id: 8
+
+ID: 126
+License Plate Number: mowe502
+Station Code: 1009
+Model_Id: 8
+
+ID: 127
+License Plate Number: mowe503
+Station Code: 1009
+Model_Id: 7
+
+ID: 128
+License Plate Number: mowe504
+Station Code: 1009
+Model_Id: 1
+
+---- RESERVATION ----
+ID: 22001
+From Date: 2017-09-01 09:00:00
+To Date: 2017-09-03 17:00:00
+Car ID: 101
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22002
+From Date: 2018-03-17 16:00:00
+To Date: 2018-03-25 16:00:00
+Car ID: 101
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22003
+From Date: 2018-03-19 10:00:00
+To Date: 2018-03-23 20:00:00
+Car ID: 101
+Old Reservation ID: 22002
+Status: Confirmed
+
+ID: 22004
+From Date: 2018-03-01 08:00:00
+To Date: 2018-03-10 20:00:00
+Car ID: 101
+Old Reservation ID: NULL
+Status: Ongoing
+
+ID: 22005
+From Date: 2017-12-15 13:30:00
+To Date: 2017-12-25 18:00:00
+Car ID: 101
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22006
+From Date: 2017-11-01 06:00:00
+To Date: 2017-11-04 12:00:00
+Car ID: 102
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22007
+From Date: 2018-02-23 10:00:00
+To Date: 2018-03-05 17:00:00
+Car ID: 102
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22008
+From Date: 2018-03-10 10:00:00
+To Date: 2018-03-16 20:00:00
+Car ID: 102
+Old Reservation ID: 22007
+Status: Confirmed
+
+ID: 22009
+From Date: 2018-02-25 09:00:00
+To Date: 2018-03-10 21:00:00
+Car ID: 103
+Old Reservation ID: NULL
+Status: Ongoing
+
+ID: 22010
+From Date: 2017-12-09 14:00:00
+To Date: 2017-12-11 17:00:00
+Car ID: 103
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22011
+From Date: 2018-02-01 08:00:00
+To Date: 2018-02-05 16:00:00
+Car ID: 104
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22012
+From Date: 2017-12-25 09:00:00
+To Date: 2018-01-05 19:00:00
+Car ID: 106
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22013
+From Date: 2018-04-23 09:00:00
+To Date: 2018-05-01 14:00:00
+Car ID: 106
+Old Reservation ID: NULL
+Status: Confirmed
+
+ID: 22014
+From Date: 2018-02-19 08:00:00
+To Date: 2018-02-23 20:00:00
+Car ID: 107
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22015
+From Date: 2018-02-21 08:00:00
+To Date: 2018-03-10 20:00:00
+Car ID: 107
+Old Reservation ID: 22014
+Status: Ongoing
+
+ID: 22016
+From Date: 2017-10-09 08:00:00
+To Date: 2017-10-09 21:00:00
+Car ID: 107
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22017
+From Date: 2018-06-03 07:00:00
+To Date: 2018-06-20 15:00:00
+Car ID: 107
+Old Reservation ID: NULL
+Status: Confirmed
+
+ID: 22018
+From Date: 2018-01-14 09:00:00
+To Date: 2018-01-20 14:00:00
+Car ID: 109
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22019
+From Date: 2018-02-01 09:00:00
+To Date: 2018-02-03 16:00:00
+Car ID: 111
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22020
+From Date: 2018-02-26 06:00:00
+To Date: 2018-03-07 12:00:00
+Car ID: 113
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22021
+From Date: 2018-02-28 11:00:00
+To Date: 2018-03-08 23:00:00
+Car ID: 113
+Old Reservation ID: 22020
+Status: Ongoing
+
+ID: 22022
+From Date: 2017-07-02 09:00:00
+To Date: 2018-07-05 21:30:00
+Car ID: 113
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22023
+From Date: 2018-02-05 08:00:00
+To Date: 2018-02-08 18:00:00
+Car ID: 114
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22024
+From Date: 2018-04-02 16:00:00
+To Date: 2018-04-06 16:00:00
+Car ID: 116
+Old Reservation ID: NULL
+Status: Confirmed
+
+ID: 22025
+From Date: 2018-03-03 07:00:00
+To Date: 2018-03-15 23:30:00
+Car ID: 116
+Old Reservation ID: NULL
+Status: Ongoing
+
+ID: 22026
+From Date: 2018-01-01 07:00:00
+To Date: 2018-01-01 17:00:00
+Car ID: 118
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22027
+From Date: 2018-04-04 09:00:00
+To Date: 2018-04-06 15:00:00
+Car ID: 119
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22028
+From Date: 2018-02-14 13:00:00
+To Date: 2018-03-25 23:00:00
+Car ID: 119
+Old Reservation ID: NULL
+Status: Ongoing
+
+ID: 22029
+From Date: 2017-09-26 08:00:00
+To Date: 2017-10-03 20:00:00
+Car ID: 119
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22030
+From Date: 2018-03-26 10:00:00
+To Date: 2018-03-29 16:00:00
+Car ID: 123
+Old Reservation ID: NULL
+Status: Confirmed
+
+ID: 22031
+From Date: 2017-12-21 06:00:00
+To Date: 2017-12-28 22:00:00
+Car ID: 124
+Old Reservation ID: NULL
+Status: Completed
+
+ID: 22032
+From Date: 2017-09-22 16:00:00
+To Date: 2017-09-23 08:00:00
+Car ID: 126
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22033
+From Date: 2017-09-23 14:00:00
+To Date: 2017-09-23 17:00:00
+Car ID: 126
+Old Reservation ID: 22032
+Status: Completed
+
+ID: 22034
+From Date: 2018-01-01 22:00:00
+To Date: 2018-04-05 14:00:00
+Car ID: 127
+Old Reservation ID: NULL
+Status: Ongoing
+
+ID: 22035
+From Date: 2017-12-07 09:00:00
+To Date: 2017-12-13 12:00:00
+Car ID: 127
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22036
+From Date: 2018-03-24 10:00:00
+To Date: 2018-04-02 21:00:00
+Car ID: 128
+Old Reservation ID: NULL
+Status: Confirmed
+
+ID: 22037
+From Date: 2017-09-25 09:00:00
+To Date: 2017-09-27 20:00:00
+Car ID: 103
+Old Reservation ID: NULL
+Status: Cancelled
+
+ID: 22038
+From Date: 2017-09-25 09:00:00
+To Date: 2017-09-27 20:00:00
+Car ID: 104
+Old Reservation ID: 22037
+Status: Completed
+
+--- CUSTOMER_RESERVATION ---
+Customer Email: j.s@mail.com
+Reservation ID: 22001
+
+Customer Email: terry.su@mail.com
+Reservation ID: 22001
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22002
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22003
+
+Customer Email: dchen@mail.com
+Reservation ID: 22004
+
+Customer Email: jj.swtz@mail.com
+Reservation ID: 22005
+
+Customer Email: r.k@mail.com
+Reservation ID: 22006
+
+Customer Email: cyngu@mail.com
+Reservation ID: 22006
+
+Customer Email: ma.smith@mail.com
+Reservation ID: 22007
+
+Customer Email: jparki@mail.com
+Reservation ID: 22007
+
+Customer Email: ma.smith@mail.com
+Reservation ID: 22008
+
+Customer Email: jparki@mail.com
+Reservation ID: 22008
+
+Customer Email: orlows@mail.com
+Reservation ID: 22009
+
+Customer Email: j.s@mail.com
+Reservation ID: 22010
+
+Customer Email: malik_aa@mail.com
+Reservation ID: 22011
+
+Customer Email: malik_aa@mail.com
+Reservation ID: 22012
+
+Customer Email: jparki@mail.com
+Reservation ID: 22013
+
+Customer Email: shenian@mail.com
+Reservation ID: 22014
+
+Customer Email: shenian@mail.com
+Reservation ID: 22015
+
+Customer Email: shenian@mail.com
+Reservation ID: 22016
+
+Customer Email: shenian@mail.com
+Reservation ID: 22017
+
+Customer Email: orlows@mail.com
+Reservation ID: 22018
+
+Customer Email: t.g@gmail.com
+Reservation ID: 22019
+
+Customer Email: t.g@gmail.com
+Reservation ID: 22020
+
+Customer Email: t.g@gmail.com
+Reservation ID: 22021
+
+Customer Email: orlows@mail.com
+Reservation ID: 22022
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22023
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22024
+
+Customer Email: y.c@mail.com
+Reservation ID: 22025
+
+Customer Email: y.c@mail.com
+Reservation ID: 22026
+
+Customer Email: y.c@mail.com
+Reservation ID: 22027
+
+Customer Email: cyngu@mail.com
+Reservation ID: 22028
+
+Customer Email: dchen@mail.com
+Reservation ID: 22029
+
+Customer Email: shenian@mail.com
+Reservation ID: 22030
+
+Customer Email: dchen@mail.com
+Reservation ID: 22030
+
+Customer Email: y.c@mail.com
+Reservation ID: 22030
+
+Customer Email: t.g@gmail.com
+Reservation ID: 22031
+
+Customer Email: malik_aa@mail.com
+Reservation ID: 22032
+
+Customer Email: a.n@mail.com
+Reservation ID: 22032
+
+Customer Email: malik_aa@mail.com
+Reservation ID: 22033
+
+Customer Email: a.n@mail.com
+Reservation ID: 22033
+
+Customer Email: terry.su@mail.com
+Reservation ID: 22034
+
+Customer Email: jj.swtz@mail.com
+Reservation ID: 22035
+
+Customer Email: cyngu@mail.com
+Reservation ID: 22036
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22037
+
+Customer Email: s.hilbert@mail.com
+Reservation ID: 22038
