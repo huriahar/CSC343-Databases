@@ -48,57 +48,57 @@ create view alliance_interm_votes as
 -- Sum up votes of alliances
 -- Sum of all alliances' votes for each election_id
 create view alliance_interm_sum as
-	select election_id, id, head_party_id, sum(votes) as alliance_votes
-	from alliance_interm_votes
-	group by election_id, id, head_party_id;
+    select election_id, id, head_party_id, sum(votes) as alliance_votes
+    from alliance_interm_votes
+    group by election_id, id, head_party_id;
 
 -- Get the total votes of the winning party (sum of all alliance if winning party is part of an alliance)
 create view pwinner_votes as
-	select country_id, pw.election_id, cabinet_id, pw.party_id, avotes.id as alliance_id, alliance_votes
-	from pelection_winners pw, alliance_interm_votes avotes, alliance_interm_sum asum
-	where pw.election_id = avotes.election_id AND
-	      avotes.election_id = asum.election_id AND
-	      asum.election_id = pw.election_id AND
-	      pw.party_id = avotes.alliance_party_id AND
-	      avotes.id = asum.id;
+    select country_id, pw.election_id, cabinet_id, pw.party_id, avotes.id as alliance_id, alliance_votes
+    from pelection_winners pw, alliance_interm_votes avotes, alliance_interm_sum asum
+    where pw.election_id = avotes.election_id AND
+          avotes.election_id = asum.election_id AND
+          asum.election_id = pw.election_id AND
+          pw.party_id = avotes.alliance_party_id AND
+          avotes.id = asum.id;
 
 -- For each "winner", look at the max votes excluding winning party and all parties of its alliance
 create view vote_pairs as
-	select country_id, pw.election_id, cabinet_id, pw.party_id as win_party_id, asum.head_party_id as lose_party_id,
-	pw.alliance_votes as winvotes, asum.alliance_votes as losevotes
-	from pwinner_votes pw, alliance_interm_sum asum
-	where pw.election_id = asum.election_id AND
-	      pw.alliance_id != asum.id;
+    select country_id, pw.election_id, cabinet_id, pw.party_id as win_party_id, asum.head_party_id as lose_party_id,
+    pw.alliance_votes as winvotes, asum.alliance_votes as losevotes
+    from pwinner_votes pw, alliance_interm_sum asum
+    where pw.election_id = asum.election_id AND
+          pw.alliance_id != asum.id;
 
 create view vote_pairs_diff as
-	select country_id, election_id, cabinet_id, win_party_id, lose_party_id,
-	winvotes, losevotes, ((CAST(winvotes - losevotes AS FLOAT))/(CAST(winvotes AS FLOAT)))*100.0 as percentageDiff
-	from vote_pairs;
+    select country_id, election_id, cabinet_id, win_party_id, lose_party_id,
+    winvotes, losevotes, ((CAST(winvotes - losevotes AS FLOAT))/(CAST(winvotes AS FLOAT)))*100.0 as percentageDiff
+    from vote_pairs;
 
 -- Drop all with percentageDiff < 10
 create view vote_pairs_filtered as
-	select *
-	from vote_pairs_diff
-	where percentageDiff > 0 AND percentageDiff < 10;
+    select *
+    from vote_pairs_diff
+    where percentageDiff > 0 AND percentageDiff < 10;
 
 create view runner_up as
-	select DISTINCT country_id, election_id, win_party_id, lose_party_id, percentageDiff
-	from vote_pairs_filtered v1
-	where percentageDiff = 
-		(select min(percentageDiff)
-		 from vote_pairs_filtered v2
-		 where v1.country_id = v2.country_id AND
-		       v1.election_id = v2.election_id);
+    select DISTINCT country_id, election_id, win_party_id, lose_party_id, percentageDiff
+    from vote_pairs_filtered v1
+    where percentageDiff = 
+        (select min(percentageDiff)
+         from vote_pairs_filtered v2
+         where v1.country_id = v2.country_id AND
+               v1.election_id = v2.election_id);
 
 create view add_win_country as
-	select runner_up.election_id as electionID, country.name as countryName, party.name as winningParty, lose_party_id
-	from runner_up join country on runner_up.country_id = country.id
-	               join party on runner_up.win_party_id = party.id;
+    select runner_up.election_id as electionID, country.name as countryName, party.name as winningParty, lose_party_id
+    from runner_up join country on runner_up.country_id = country.id
+                   join party on runner_up.win_party_id = party.id;
 
 create view result as
-	select electionID, countryName, winningParty, party.name as closeRunnerUp
-	from add_win_country join party on add_win_country.lose_party_id = party.id;
+    select electionID, countryName, winningParty, party.name as closeRunnerUp
+    from add_win_country join party on add_win_country.lose_party_id = party.id;
 
 -- the answer to the query 
 insert into q5 
-	select * from result;
+    select * from result;

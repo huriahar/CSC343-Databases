@@ -69,27 +69,27 @@ create view all_countries as
     group by country_id, name, electoral_system;
 
 create view single_party_alliances as
-    select country_id, count(count) as single_party
+    select country_id, count(*) as single_party
     from pwinner_alliances
     where count = 1
     group by country_id;
 
 create view two_to_three_party_alliances as
-    select country_id, count(count) as two_to_three
+    select country_id, count(*) as two_to_three
     from pwinner_alliances
     where count = 2 OR
           count = 3
     group by country_id;
 
 create view four_to_five_party_alliances as
-    select country_id, count(count) as four_to_five
+    select country_id, count(*) as four_to_five
     from pwinner_alliances
     where count = 4 OR
           count = 5
     group by country_id;
 
 create view six_or_more_party_alliances as
-    select country_id, count(count) as six_or_more
+    select country_id, count(*) as six_or_more
     from pwinner_alliances
     where count >= 6
     group by country_id;
