@@ -3,22 +3,31 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Assignment3 extends JDBCSubmission {
-
+    private Connection conn = null;
     public Assignment3() throws ClassNotFoundException {
-
         Class.forName("org.postgresql.Driver");
+        this.conn = null;
     }
 
     @Override
     public boolean connectDB(String url, String username, String password) {
-	    //write your code here.
-            return true;
+        try{ 
+            conn = DriverManager.getConnection(url, username, password);
+        } catch(SQLException sqlE) {
+            System.out.println(sqlE);
+        }
+        return (conn != null);
     }
 
     @Override
     public boolean disconnectDB() {
-	    //write your code here.
-            return true;
+        try{ 
+            conn.close();
+        } catch(SQLException sqlE){
+            System.out.println(sqlE);
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -34,8 +43,11 @@ public class Assignment3 extends JDBCSubmission {
     }
 
     public static void main(String[] args) throws Exception {
-   	    //Write code here. 
 	    System.out.println("Hellow World");
+        Assignment3 a3 = new Assignment3();
+        String url = "jdbc:postgresql://localhost:5432/csc343h-elsaye10";
+        String username = "elsaye10";
+        a3.connectDB(url, username, "");
     }
 
 }
