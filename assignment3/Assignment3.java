@@ -34,15 +34,17 @@ public class Assignment3 extends JDBCSubmission {
         List<Integer> pids = new ArrayList<Integer>();
         List<String> parties = new ArrayList<String>();
         try {
-            String query = "SELECT politician_president.id, party.name FROM politician_president JOIN party ON party.id = politician_president.party_id JOIN country ON politician_president.country_id     = country.id WHERE country.name = %" + countryName + "% ORDER BY end_date;";
+            String query = "SELECT politician_president.id, party.name FROM politician_president JOIN party ON party.id = politician_president.party_id JOIN country ON politician_president.country_id = country.id WHERE country.name = '" + countryName + "' ORDER BY end_date;";
             PreparedStatement execStat = connection.prepareStatement(query); 
             ResultSet entry = execStat.executeQuery();
             while (entry.next()) {
                 Integer id = entry.getInt(1); 
                 String party = entry.getString(2);
+                //System.out.println("president id = " + id + " party name is " + party);
                 parties.add(party);
                 pids.add(id);
             }
+            //System.out.println("done.");
         } catch (SQLException sqlE) {
             //System.out.println(sqlE);
         }
@@ -54,14 +56,14 @@ public class Assignment3 extends JDBCSubmission {
     public List<Integer> findSimilarParties(Integer partyId, Float threshold) {
         List<Integer> party_ids = new ArrayList<Integer>();
         try {
-            String query = "SELECT p1.description, p2.id, p2.description FROM party p1 JOIN party p2 ON p1.id <> p2.id WHERE p1.id = %" + partyId + "%;";
+            String query = "SELECT p1.description, p2.id, p2.description FROM party p1 JOIN party p2 ON p1.id <> p2.id WHERE p1.id = " + partyId + ";";
             PreparedStatement execStat = connection.prepareStatement(query); 
             ResultSet entry = execStat.executeQuery();
             while (entry.next()) {
                 String p1_description = entry.getString(1); 
                 Integer pid2 = entry.getInt(2); 
                 String p2_description = entry.getString(3); 
-                System.out.println("p1_des = " + p1_description + " pid2 = " + pid2 + "p2_des = " + p2_description); 
+                //System.out.println("p1_des = " + p1_description + " pid2 = " + pid2 + "p2_des = " + p2_description); 
                 Float jaccard_score;
                 if (p1_description == null || p2_description == null) {
                     jaccard_score = (float)0.0;
@@ -72,6 +74,7 @@ public class Assignment3 extends JDBCSubmission {
                     party_ids.add(pid2);
                 }
             }
+            //System.out.println("done.");
         } catch (SQLException sqlE) {
             //System.out.println(sqlE);
         }
@@ -84,10 +87,9 @@ public class Assignment3 extends JDBCSubmission {
         //String url = "jdbc:postgresql://localhost:5432/csc343h-elsaye10";
         //String username = "elsaye10";
         //boolean success = a3.connectDB(url, username, "");
-        ////System.out.println("success? " + success);
         //a3.presidentSequence("France");
+        //a3.findSimilarParties(442, (float)0.25);
         //success = a3.disconnectDB();
-        ////System.out.println("success? " + success);
     }
 
 }
