@@ -19,7 +19,7 @@ INSERT INTO customer VALUES
 
 INSERT INTO car_model VALUES
 (1,'BMW X5','SUV',415,5),
-(2,'Merced),es E400','Luxury',1848,4),
+(2,'Mercedes E400','Luxury',1848,4),
 (3,'Chevrolet Spark','Economy',1521,4),
 (4,'Dodge Grand Caravan','Mini Van',2210,7),
 (5,'Chevrolet Suburban','SUV',1121,8),
