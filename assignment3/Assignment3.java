@@ -13,7 +13,7 @@ public class Assignment3 extends JDBCSubmission {
         try{ 
             connection = DriverManager.getConnection(url, username, password);
         } catch(SQLException sqlE) {
-            //System.out.println(sqlE);
+            return false;
         }
         return (connection != null);
     }
@@ -23,7 +23,6 @@ public class Assignment3 extends JDBCSubmission {
         try{ 
             connection.close();
         } catch(SQLException sqlE){
-            //System.out.println(sqlE);
             return false;
         }
         return true;
@@ -40,17 +39,15 @@ public class Assignment3 extends JDBCSubmission {
             while (entry.next()) {
                 Integer id = entry.getInt(1); 
                 String party = entry.getString(2);
-                //System.out.println("president id = " + id + " party name is " + party);
                 parties.add(party);
                 pids.add(id);
             }
-            //System.out.println("done.");
         } catch (SQLException sqlE) {
-            //System.out.println(sqlE);
+
         }
         ElectionResult r  = new ElectionResult(pids, parties);
         return r;
-	}
+    }
 
     @Override
     public List<Integer> findSimilarParties(Integer partyId, Float threshold) {
@@ -63,7 +60,6 @@ public class Assignment3 extends JDBCSubmission {
                 String p1_description = entry.getString(1); 
                 Integer pid2 = entry.getInt(2); 
                 String p2_description = entry.getString(3); 
-                //System.out.println("p1_des = " + p1_description + " pid2 = " + pid2 + "p2_des = " + p2_description); 
                 Float jaccard_score;
                 if (p1_description == null || p2_description == null) {
                     jaccard_score = (float)0.0;
@@ -73,23 +69,14 @@ public class Assignment3 extends JDBCSubmission {
                 if(jaccard_score >= threshold) {
                     party_ids.add(pid2);
                 }
-            }
-            //System.out.println("done.");
         } catch (SQLException sqlE) {
-            //System.out.println(sqlE);
+
         }
         return party_ids;
     }
 
     public static void main(String[] args) throws Exception {
-	    //System.out.println("Hellow World");
-        //Assignment3 a3 = new Assignment3();
-        //String url = "jdbc:postgresql://localhost:5432/csc343h-elsaye10";
-        //String username = "elsaye10";
-        //boolean success = a3.connectDB(url, username, "");
-        //a3.presidentSequence("France");
-        //a3.findSimilarParties(442, (float)0.25);
-        //success = a3.disconnectDB();
+
     }
 
 }
