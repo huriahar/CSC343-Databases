@@ -10,11 +10,10 @@ SET SEARCH_PATH to carschema;
 -- Customer information
 CREATE TABLE customer (
 	-- Full name of the customer
-	name VARCHAR(50) PRIMARY KEY,
+	name VARCHAR(50) NOT NULL UNIQUE,
 	-- May not need the check, but nice to have
-	age INT NOT NULL check
-		(age >=18 AND age <= 120),
-	email VARCHAR(100) NOT NULL UNIQUE
+	age INT NOT NULL check (age >=18),
+	email VARCHAR(100) PRIMARY KEY
 );
 
 CREATE TABLE car_model (
@@ -22,7 +21,7 @@ CREATE TABLE car_model (
 	name VARCHAR(30) NOT NULL UNIQUE,
 	vehicle_type VARCHAR(10) NOT NULL,
 	model_num INT NOT NULL,
-	capacity INT NOT NULL
+	capacity INT NOT NULL check (capacity >= 0)
 );
 
 CREATE TABLE rental_station (
@@ -40,13 +39,16 @@ CREATE TABLE car (
 	model_id INT NOT NULL REFERENCES car_model(id)
 );
 
-CREATE TYPE reservation_status AS ENUM(
+CREATE TYPE reservation_status AS ENUM (
 	'Completed', 'Cancelled', 'Confirmed', 'Ongoing');
 
+-- Ensuring that the same customer does not make two reservations
+-- on overlapping time periods requires triggers - not implemented
 CREATE TABLE reservation (
 	id INT PRIMARY KEY,
 	from_date TIMESTAMP NOT NULL,
-	to_date TIMESTAMP NOT NULL,
+	-- Check to date is higher than from date
+	to_date TIMESTAMP NOT NULL check (to_date > from_date),
 	car_id INT NOT NULL REFERENCES car(id),
 	old_reservation INT REFERENCES reservation(id),
 	status reservation_status NOT NULL
