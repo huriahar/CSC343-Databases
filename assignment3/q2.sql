@@ -5,7 +5,8 @@ DROP VIEW IF EXISTS shared_reservations CASCADE;
 -- Select all reservations which have more than 1 driver/customer
 CREATE VIEW shared_reservations AS
 SELECT reservation_id, count(*) AS num_drivers
-FROM customer_reservation
+FROM customer_reservation JOIN reservation ON customer_reservation.reservation_id = reservation.id
+WHERE status <> 'Cancelled'
 GROUP BY reservation_id
 HAVING count(*) > 1
 ORDER BY reservation_id;

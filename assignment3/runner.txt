@@ -1,5 +1,5 @@
 \echo -- Loading schema and data:
-\i schema.sql
+\i schema.ddl
 \i data.sql
 \echo -- Query 1:
 \i q1.sql
