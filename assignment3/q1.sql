@@ -1,5 +1,4 @@
 SET SEARCH_PATH TO carschema;
-DROP TABLE IF EXISTS q1 CASCADE;
 
 DROP VIEW IF EXISTS confirmed_ongoing_completed_res CASCADE;
 DROP VIEW IF EXISTS cancelled_res CASCADE;
