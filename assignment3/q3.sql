@@ -27,5 +27,7 @@ CREATE VIEW most_reserved_tie AS
 (SELECT * FROM reservation_freq) EXCEPT (SELECT * FROM most_reserved);
 
 -- Get the car model name
-SELECT car_model.name, most_reserved_tie.freq
-FROM car_model JOIN most_reserved_tie ON car_model.id = most_reserved_tie.model_id;
+SELECT car_model.name AS model_name
+FROM car_model JOIN most_reserved_tie ON car_model.id = most_reserved_tie.model_id
+ORDER BY car_model.name
+LIMIT 1;
