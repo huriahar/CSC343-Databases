@@ -1,5 +1,5 @@
 -- Loading schema and data:
-psql:schema.ddl:5: NOTICE:  drop cascades to 15 other objects
+psql:schema.ddl:5: NOTICE:  drop cascades to 12 other objects
 DETAIL:  drop cascades to table carschema.customer
 drop cascades to table carschema.car_model
 drop cascades to table carschema.rental_station
@@ -7,9 +7,6 @@ drop cascades to table carschema.car
 drop cascades to type carschema.reservation_status
 drop cascades to table carschema.reservation
 drop cascades to table carschema.customer_reservation
-drop cascades to view carschema.confirmed_ongoing_completed_res
-drop cascades to view carschema.cancelled_res
-drop cascades to view carschema.shared_reservations
 drop cascades to view carschema.reservation_freq
 drop cascades to view carschema.most_reserved
 drop cascades to view carschema.most_reserved_tie
@@ -68,11 +65,10 @@ DROP VIEW
 CREATE VIEW
 CREATE VIEW
 CREATE VIEW
-  name   | freq 
----------+------
- Kia T21 |    2
- BMW X5  |    2
-(2 rows)
+ model_name 
+------------
+ BMW X5
+(1 row)
 
 -- Query 4:
 SET
