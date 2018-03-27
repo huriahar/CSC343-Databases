@@ -1,0 +1,89 @@
+-- Loading schema and data:
+psql:schema.ddl:5: NOTICE:  drop cascades to 15 other objects
+DETAIL:  drop cascades to table carschema.customer
+drop cascades to table carschema.car_model
+drop cascades to table carschema.rental_station
+drop cascades to table carschema.car
+drop cascades to type carschema.reservation_status
+drop cascades to table carschema.reservation
+drop cascades to table carschema.customer_reservation
+drop cascades to view carschema.confirmed_ongoing_completed_res
+drop cascades to view carschema.cancelled_res
+drop cascades to view carschema.shared_reservations
+drop cascades to view carschema.reservation_freq
+drop cascades to view carschema.most_reserved
+drop cascades to view carschema.most_reserved_tie
+drop cascades to view carschema.thirtyoryounger
+drop cascades to view carschema.cancelled_reservations
+DROP SCHEMA
+CREATE SCHEMA
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TYPE
+CREATE TABLE
+CREATE TABLE
+SET
+INSERT 0 15
+INSERT 0 8
+INSERT 0 9
+INSERT 0 28
+INSERT 0 38
+INSERT 0 46
+-- Query 1:
+SET
+psql:q1.sql:3: NOTICE:  view "confirmed_ongoing_completed_res" does not exist, skipping
+DROP VIEW
+psql:q1.sql:4: NOTICE:  view "cancelled_res" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+CREATE VIEW
+    cust_email    | cancelled_num | confirmed_ongoing_completed_num | reservation_cancellation_ratio 
+------------------+---------------+---------------------------------+--------------------------------
+ a.n@mail.com     |             1 |                               1 |                              1
+ jj.swtz@mail.com |             1 |                               1 |                              1
+(2 rows)
+
+-- Query 2:
+SET
+psql:q2.sql:3: NOTICE:  view "shared_reservations" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+   cust_email   | num_shared_reservations 
+----------------+-------------------------
+ a.n@mail.com   |                       1
+ cyngu@mail.com |                       1
+(2 rows)
+
+-- Query 3:
+SET
+psql:q3.sql:3: NOTICE:  view "reservation_freq" does not exist, skipping
+DROP VIEW
+psql:q3.sql:4: NOTICE:  view "most_reserved" does not exist, skipping
+DROP VIEW
+psql:q3.sql:5: NOTICE:  view "most_reserved_tie" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+  name   | freq 
+---------+------
+ Kia T21 |    2
+ BMW X5  |    2
+(2 rows)
+
+-- Query 4:
+SET
+psql:q4.sql:3: NOTICE:  view "thirtyoryounger" does not exist, skipping
+DROP VIEW
+psql:q4.sql:4: NOTICE:  view "cancelled_reservations" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+CREATE VIEW
+       email        
+--------------------
+ s.hilbert@mail.com
+(1 row)
+
