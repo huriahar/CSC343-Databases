@@ -33,9 +33,11 @@ public class Assignment3 extends JDBCSubmission {
         List<Integer> pids = new ArrayList<Integer>();
         List<String> parties = new ArrayList<String>();
         try {
+            // Find all presidents and the parties they are from in the given country
             String query = "SELECT politician_president.id, party.name FROM politician_president JOIN party ON party.id = politician_president.party_id JOIN country ON politician_president.country_id = country.id WHERE country.name = '" + countryName + "' ORDER BY end_date;";
             PreparedStatement execStat = connection.prepareStatement(query); 
             ResultSet entry = execStat.executeQuery();
+            //For every entry returned, get the president id and party name
             while (entry.next()) {
                 Integer id = entry.getInt(1); 
                 String party = entry.getString(2);
@@ -53,6 +55,7 @@ public class Assignment3 extends JDBCSubmission {
     public List<Integer> findSimilarParties(Integer partyId, Float threshold) {
         List<Integer> party_ids = new ArrayList<Integer>();
         try {
+            // Find all parties whose description has a jaccard_score >= threshold (compared to the given party's description)
             String query = "SELECT p1.description, p2.id, p2.description FROM party p1 JOIN party p2 ON p1.id <> p2.id WHERE p1.id = " + partyId + ";";
             PreparedStatement execStat = connection.prepareStatement(query); 
             ResultSet entry = execStat.executeQuery();
@@ -61,6 +64,7 @@ public class Assignment3 extends JDBCSubmission {
                 Integer pid2 = entry.getInt(2); 
                 String p2_description = entry.getString(3); 
                 Float jaccard_score;
+                //if one of the parties' descriptions is null, the similarity score should be 0.0
                 if (p1_description == null || p2_description == null) {
                     jaccard_score = (float)0.0;
                 } else {
