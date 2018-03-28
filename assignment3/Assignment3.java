@@ -73,6 +73,7 @@ public class Assignment3 extends JDBCSubmission {
                 if(jaccard_score >= threshold) {
                     party_ids.add(pid2);
                 }
+            }
         } catch (SQLException sqlE) {
 
         }
