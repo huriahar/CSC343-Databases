@@ -30,3 +30,5 @@ CREATE VIEW most_reserved_tie AS
 SELECT car_model.name AS model_name
 FROM car_model JOIN most_reserved_tie ON car_model.id = most_reserved_tie.model_id
 ORDER BY car_model.name
+-- According to A3 FAQ on piazza
+LIMIT 1;

@@ -71,8 +71,7 @@ CREATE VIEW
  model_name 
 ------------
  BMW X5
- Kia T21
-(2 rows)
+(1 row)
 
 -- Query 4:
 SET
