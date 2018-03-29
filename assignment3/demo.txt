@@ -8,7 +8,7 @@ drop cascades to type carschema.reservation_status
 drop cascades to table carschema.reservation
 drop cascades to table carschema.customer_reservation
 drop cascades to view carschema.confirmed_ongoing_completed_res
-drop cascades to view carschema.cancelled_res
+drop cascades to view carschema.cancelled_res_ids
 drop cascades to view carschema.shared_reservations
 drop cascades to view carschema.reservation_freq
 drop cascades to view carschema.most_reserved
@@ -36,14 +36,17 @@ INSERT 0 46
 SET
 psql:q1.sql:3: NOTICE:  view "confirmed_ongoing_completed_res" does not exist, skipping
 DROP VIEW
-psql:q1.sql:4: NOTICE:  view "cancelled_res" does not exist, skipping
+psql:q1.sql:4: NOTICE:  view "cancelled_res_ids" does not exist, skipping
+DROP VIEW
+psql:q1.sql:5: NOTICE:  view "cancelled_reservations" does not exist, skipping
 DROP VIEW
 CREATE VIEW
 CREATE VIEW
-    cust_email    | cancelled_num | confirmed_ongoing_completed_num | reservation_cancellation_ratio 
-------------------+---------------+---------------------------------+--------------------------------
- a.n@mail.com     |             1 |                               1 |                              1
- jj.swtz@mail.com |             1 |                               1 |                              1
+CREATE VIEW
+    cust_email     | cancelled_num | confirmed_ongoing_completed_num | reservation_cancellation_ratio 
+-------------------+---------------+---------------------------------+--------------------------------
+ jj.swtz@mail.com  |             1 |                               1 |                              1
+ malik_aa@mail.com |             1 |                               2 |                            0.5
 (2 rows)
 
 -- Query 2:
@@ -77,7 +80,6 @@ CREATE VIEW
 SET
 psql:q4.sql:3: NOTICE:  view "thirtyoryounger" does not exist, skipping
 DROP VIEW
-psql:q4.sql:4: NOTICE:  view "cancelled_reservations" does not exist, skipping
 DROP VIEW
 CREATE VIEW
 CREATE VIEW
@@ -85,4 +87,3 @@ CREATE VIEW
 --------------------
  s.hilbert@mail.com
 (1 row)
-
